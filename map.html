@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Explore Edu</title>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> -->
+    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+
+    <style type="text/css">
+      #map {
+        height: 100%;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      "use strict";
+
+      function initMap() {
+
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 4,
+          center: {
+            lat: 41.8780, 
+            lng: -93.0977,
+          },
+        });
+
+        var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+
+        var markers = locations.map(function (location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length],
+            link: location.link
+          });
+        }); 
+
+        markers.forEach((marker) => {
+            marker.addListener("click", function (e) {
+              window.open(this.link);
+            });
+        })
+
+        new MarkerClusterer(map, markers, {
+          imagePath:
+            "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+        });
+      }
+
+      var locations = [
+        {
+          name:"toronto",
+          lat: 43.6629,
+          lng: -79.3957,
+          link: "https://future.utoronto.ca/apply/requirements/"
+        },
+        {
+          name:"ubc",
+          lat: 49.2606,
+          lng: -123.2460,
+          link: "https://www.ubc.ca/admissions/"
+        },
+        {
+          name:"mcgill",
+          lat: 45.5048,
+          lng: -73.5772,
+          link: "https://www.mcgill.ca/admissions/"
+        },
+        {
+          name:"mcgmaster",
+          lat: 43.2609,
+          lng: -79.9192,
+          link: "https://future.mcmaster.ca/admission/"
+        },
+        {
+          name:"waterloo",
+          lat: 43.4723,
+          lng: -80.5449,
+          link: "https://uwaterloo.ca/admissions/"
+        },
+        {
+          name:"saupaulo",
+          lat: -23.5614,
+          lng: -46.7308,
+          link: "https://www.unipage.net/en/455/university_of_s_o_paulo"
+        },
+        {
+          name:"campinas",
+          lat: -22.8184,
+          lng: -47.0647,
+          link: "https://www.unipage.net/en/582/university_of_campinas"
+        },{
+          name:"desarrollo",
+          lat: -36.8214,
+          lng: -73.0366,
+          link: "https://www.udd.cl/application-process/"
+        },{
+          name:"Javeriana",
+          lat: 4.6285,
+          lng: -74.0647,
+          link: "https://www.unipage.net/en/2866/pontifical_xavierian_university"
+        },{
+          name:"buenosaires",
+          lat: -34.5999,
+          lng: -58.3731,
+          link: "https://www.udd.cl/application-process/"
+        },{
+          name:"oxford",
+          lat: 51.7548,
+          lng: -1.2544,
+          link: "https://www.ox.ac.uk/admissions"
+        },{
+          name:"cambridge",
+          lat: 52.2043,
+          lng: 0.1149,
+          link: "https://www.undergraduate.study.cam.ac.uk/applying"
+        },{
+          name:"london",
+          lat: 51.5246,
+          lng: -0.1340,
+          link: "https://www.imperial.ac.uk/study/ug/apply/"
+        },{
+          name:"psl",
+          lat: 48.8547,
+          lng: 2.3378,
+          link: "https://psl.eu/en/education/admissions"
+        },{
+          name:"ecole",
+          lat: 48.7143,
+          lng: 2.2113,
+          link: "https://admission.polymtl.ca/admission-main-web/pages/admission-dashboard.xhtml"
+        },{
+          name:"sorbonne",
+          lat: 48.8506,
+          lng: 2.3403,
+          link: "https://www.sorbonne-universite.fr/en/Study%20at%20Sorbonne%20University/degree-seeking-students/international-application-and-registration-0"
+        },{
+          name:"eth",
+          lat: 47.3764,
+          lng: 8.5476,
+          link: "https://ethz.ch/en/studies/master/application.html"
+        },{
+          name:"ecole",
+          lat: 46.5191,
+          lng: 6.5668,
+          link: "https://www.epfl.ch/education/admission/"
+        },{
+          name:"zurich",
+          lat: 47.3743,
+          lng: 8.5510,
+          link: "https://www.uzh.ch/en/studies/application.html"
+        },{
+          name:"Technische",
+          lat: 48.1497,
+          lng: 11.5679,
+          link: "https://www.tum.de/en/studies/application-and-acceptance/"
+        },{
+          name:"ludwig",
+          lat: 48.1505,
+          lng: 11.5802,
+          link: "https://www.lmu.de/en/study/degree-students/applications-for-admission/index.html"
+        },{
+          name:"Heidelberg",
+          lat: 49.4191,
+          lng: 8.6703,
+          link: "https://www.uni-heidelberg.de/en/study/application-enrolment"
+        },{
+          name:"KU",
+          lat: 50.8780,
+          lng:  4.7003,
+          link: "https://www.kuleuven.be/english/application"
+        },{
+          name:"Ghent",
+          lat: 51.0247,
+          lng: 3.7253,
+          link: "https://www.ugent.be/prospect/en/administration/application"
+        },{
+          name:"Louvain",
+          lat: 50.6697,
+          lng: 4.6156,
+          link: "https://uclouvain.be/en/study/inscriptions/admissio-requirements.html"
+        },{
+          name:"Tsinghua ",
+          lat: 39.90657,
+          lng: 116.38766,
+          link: "https://www.tsinghua.edu.cn/en/Admissions.htm"
+        },{
+          name:"Peking",
+          lat: 39.9869,
+          lng: 116.3059,
+          link: "https://www.isd.pku.edu.cn/HOME/ADMISSION.htm"
+        },{
+          name:"National University of Singapore",
+          lat: 1.2966,
+          lng: 103.7764,
+          link: "https://www.nus.edu.sg/admissions"
+        },{
+          name:"Cape Town",
+          lat: -33.9577,
+          lng: 18.4612,
+          link: "http://www.students.uct.ac.za/students/applications/international-applicants"
+        },{
+          name:"Witwatersrand",
+          lat: -26.1929,
+          lng: 28.0305,
+          link: "https://www.wits.ac.za/undergraduate/apply-to-wits/"
+        },{
+          name:"Stellenbosch",
+          lat: -33.9328,
+          lng: 18.8644,
+          link: "http://www.sun.ac.za/english/maties/apply"
+        },{
+          name:"Australian ",
+          lat: -35.2777,
+          lng: 149.1185,
+          link: "https://www.anu.edu.au/study/apply"
+        },{
+          name:"Sydney ",
+          lat: -33.8886,
+          lng: 151.1873,
+          link: "https://www.sydney.edu.au/study/how-to-apply.html"
+        },{
+          name:"Melbourne ",
+          lat: -37.7983,
+          lng: 144.9610,
+          link: "https://study.unimelb.edu.au/how-to-apply/your-online-application"
+        },
+        {
+          name:"Princeton  ",
+          lat: 40.3431,
+          lng: -74.6551,
+          link: "https://admission.princeton.edu/how-apply/application-checklist"
+        },
+        {
+          name:"Harvard  ",
+          lat: 42.3770,
+          lng: -71.1167,
+          link: "https://college.harvard.edu/admissions"
+        },
+        {
+          name:"Columbia ",
+          lat: 42.3770,
+          lng: -71.1167,
+          link: "https://apply.college.columbia.edu/SUA/login"
+        },
+        {
+          name:"MIT ",
+          lat: 42.3601,
+          lng: -71.0942,
+          link: "https://mitadmissions.org/"
+        },
+        {
+          name:"Yale ",
+          lat: 41.3163,
+          lng: -72.9223,
+          link: "https://www.yale.edu/admissions"
+        },
+        {
+          name:"Stanford ",
+          lat: 37.4275,
+          lng: -122.1697,
+          link: "https://www.stanford.edu/admission/"
+        },
+        {
+          name:"Chicago ",
+          lat: 41.7886,
+          lng: -87.5987,
+          link: "https://www.uchicago.edu/admissions/"
+        },
+        {
+          name:"Upenn ",
+          lat: 39.9522,
+          lng: -75.1932,
+          link: "https://admissions.upenn.edu/"
+        },
+        {
+          name:"Caltech ",
+          lat: 34.1377,
+          lng: -118.1253,
+          link: "https://www.admissions.caltech.edu/"
+        },
+        {
+          name:"Hopkins ",
+          lat: 39.3299,
+          lng: -76.6205,
+          link: "https://apply.jhu.edu/"
+        },
+        {
+          name:"Northwest ",
+          lat: 47.6577,
+          lng: 122.1925,
+          link: "https://www.northwestu.edu/admissions"
+        },
+        {
+          name:"Duke ",
+          lat: 36.0014,
+          lng: -78.9382,
+          link: "https://admissions.duke.edu/"
+        },
+        {
+          name:"Dartmouth ",
+          lat: 43.7044,
+          lng: -72.2887,
+          link: "https://admissions.dartmouth.edu/"
+        },
+        {
+          name:"Brown ",
+          lat: 41.8268,
+          lng: -71.4025,
+          link: "https://admission.brown.edu/"
+        },
+        {
+          name:"Vanderbilt ",
+          lat: 36.1447,
+          lng: -86.8027,
+          link: "https://admissions.vanderbilt.edu/"
+        },
+      ];
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+  </body>
+</html>
